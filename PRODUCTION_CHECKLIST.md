@@ -1,7 +1,7 @@
 # Dubai-Listings API: Production Readiness Checklist
 
 ## 📁 Project Setup
-- [ ] Initialize Git repository
+- [x] Initialize Git repository
 - [ ] Set up `package.json` with all required dependencies and scripts
 - [ ] Configure `.gitignore` file
 - [ ] Set up `.env` and `.env.example` files
