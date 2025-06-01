@@ -4,7 +4,7 @@
 - [x] Initialize Git repository
 - [x] Set up `package.json` with all required dependencies and scripts
 - [x] Configure `.gitignore` file
-- [ ] Set up `.env` and `.env.example` files
+- [x] Set up `.env` and `.env.example` files
 - [ ] Configure ESLint and Prettier
 - [ ] Set up Husky for pre-commit hooks
 
