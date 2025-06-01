@@ -45,6 +45,13 @@ const userSchema = new mongoose.Schema(
         message: 'Passwords are not the same!',
       },
     },
+    emailVerificationToken: String,
+    emailVerificationExpires: Date,
+    emailVerified: {
+      type: Boolean,
+      default: false,
+      select: false,
+    },
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
@@ -102,32 +109,24 @@ userSchema.pre(/^find/, function (next) {
 });
 
 // Instance methods
-userSchema.methods.correctPassword = async function (
-  candidatePassword,
-  userPassword
-) {
+userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-userSchema.methods.createEmailVerificationToken = function() {
+userSchema.methods.createEmailVerificationToken = function () {
   const verificationToken = crypto.randomBytes(32).toString('hex');
-  
-  this.emailVerificationToken = crypto
-    .createHash('sha256')
-    .update(verificationToken)
-    .digest('hex');
-  
+
+  this.emailVerificationToken = crypto.createHash('sha256').update(verificationToken).digest('hex');
+
   this.emailVerificationExpires = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
-  
+  this.emailVerified = false; // Ensure email is marked as not verified when token is created
+
   return verificationToken;
 };
 
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {
-    const changedTimestamp = parseInt(
-      this.passwordChangedAt.getTime() / 1000,
-      10
-    );
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
     return JWTTimestamp < changedTimestamp;
   }
   // False means NOT changed
@@ -137,10 +136,7 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 userSchema.methods.createPasswordResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString('hex');
 
-  this.passwordResetToken = crypto
-    .createHash('sha256')
-    .update(resetToken)
-    .digest('hex');
+  this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
 
