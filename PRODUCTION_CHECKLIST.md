@@ -3,7 +3,7 @@
 ## 📁 Project Setup
 - [x] Initialize Git repository
 - [x] Set up `package.json` with all required dependencies and scripts
-- [ ] Configure `.gitignore` file
+- [x] Configure `.gitignore` file
 - [ ] Set up `.env` and `.env.example` files
 - [ ] Configure ESLint and Prettier
 - [ ] Set up Husky for pre-commit hooks

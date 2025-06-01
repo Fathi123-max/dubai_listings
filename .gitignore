@@ -1,32 +1,123 @@
 # Dependencies
 node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.pnpm-store/
+.yarn/
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Lock files
 yarn.lock
+package-lock.json
+pnpm-lock.yaml
 .pnpm-lock.yaml
 
 # Package files
 .npm
+.npmrc
+.pnp*
 .eslintcache
+.next/
+.nuxt/
+.cache/
+.vercel/
+.netlify/
+.serverless/
+.turbo/
+.parcel-cache/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.node_repl_history
+
+# Build output
+/dist
+/build
+/.svelte-kit
+/.astro
+/.output
+/.nuxt
+/.next
+/out
+/.svelte-kit
+/.vercel
+/.netlify
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.pnpm-store/
+
+# Package managers
+.yarn/
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Lock files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+.pnpm-lock.yaml
+
+# Build output
+/dist
+/build
+/.svelte-kit
+/.astro
+/.output
+/.nuxt
+/.next
+/out
+/.vercel
+/.netlify
+
+# Debug logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
 
 # Environment variables
 .env
 .env.*
 !.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Build output
-dist/
-build/
+# Testing
+/coverage
+.nyc_output/
+junit.xml
 
 # IDE specific files
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.sublime-workspace
+*.sublime-project
 
 # OS generated files
 .DS_Store
@@ -37,28 +128,40 @@ build/
 ehthumbs.db
 Thumbs.db
 
-# Testing
-coverage/
-.nyc_output/
+# Development
+.cache/
+.temp/
+.tmp/
+.parcel-cache/
+.rpt2_cache/
+.rts2_cache_*
 
-# Debug logs
-logs/
-*.log
-
-# Local development
-*.local
-
-# Optional npm cache directory
+# Package manager specific
 .npm
-
-# Optional eslint cache
+.npmrc
 .eslintcache
-
-# Optional REPL history
 .node_repl_history
-
-# Output of 'npm pack'
 *.tgz
-
-# Yarn Integrity file
 .yarn-integrity
+
+# Frameworks and tools
+.serverless/
+.turbo/
+.fusebox/
+.dynamodb/
+.elasticbeanstalk/
+.quasar/
+.quasar-ssr/
+.vagrant/
+.vscode-test/
+.wercker/
+.next/
+.nuxt/
+.vercel/
+.netlify/
+.serverless/
+.parcel-cache/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
