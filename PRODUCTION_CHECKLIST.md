@@ -5,7 +5,7 @@
 - [x] Set up `package.json` with all required dependencies and scripts
 - [x] Configure `.gitignore` file
 - [x] Set up `.env` and `.env.example` files
-- [ ] Configure ESLint and Prettier
+- [x] Configure ESLint and Prettier
 - [ ] Set up Husky for pre-commit hooks
 
 ## 🛠️ Core Implementation
