@@ -2,7 +2,7 @@
 
 ## 📁 Project Setup
 - [x] Initialize Git repository
-- [ ] Set up `package.json` with all required dependencies and scripts
+- [x] Set up `package.json` with all required dependencies and scripts
 - [ ] Configure `.gitignore` file
 - [ ] Set up `.env` and `.env.example` files
 - [ ] Configure ESLint and Prettier
