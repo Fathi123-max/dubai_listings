@@ -1,6 +1,6 @@
 import express from 'express';
 import { protect, restrictTo } from '../middleware/auth.middleware.js';
-import { updatePassword } from '../controllers/auth';
+import { updatePassword } from '../controllers/auth/password.controller.js';
 import {
   getAllUsers,
   getUser,
@@ -8,12 +8,14 @@ import {
   deleteMe,
   updateUser,
   deleteUser,
+} from '../controllers/user/user.controller.js';
+import {
   setUserIdFromMe,
   uploadUserPhoto,
   resizeUserPhoto,
   checkUserPermission,
   cleanupUserPhotoOnError,
-} from '../controllers/user';
+} from '../controllers/user/user.middleware.js';
 
 const router = express.Router();
 

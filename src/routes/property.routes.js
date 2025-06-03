@@ -5,9 +5,11 @@ import {
   createProperty,
   updateProperty,
   deleteProperty,
+} from '../controllers/property/property.controller.js';
+import {
   getPropertiesWithin,
   getPropertyStats,
-} from '../controllers/property';
+} from '../controllers/property/property.stats.controller.js';
 import { protect, restrictTo } from '../middleware/auth.middleware.js';
 import {
   uploadPropertyImages,

@@ -1,16 +1,15 @@
 import express from 'express';
 import { protect } from '../middleware/auth.middleware.js';
+import { signup, login, logout, getMe } from '../controllers/auth/auth.controller.js';
 import {
-  signup,
-  login,
-  logout,
   forgotPassword,
   resetPassword,
   updatePassword,
+} from '../controllers/auth/password.controller.js';
+import {
   verifyEmail,
   resendVerificationEmail,
-} from '../controllers/auth';
-import { getMe } from '../controllers/user.controller.js';
+} from '../controllers/auth/verification.controller.js';
 
 const router = express.Router();
 

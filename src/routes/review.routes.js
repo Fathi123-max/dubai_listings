@@ -6,11 +6,13 @@ import {
   deleteReview,
   updateReview,
   getReview,
+} from '../controllers/review/review.controller.js';
+import {
   setPropertyUserIds,
   checkPropertyExists,
   checkDuplicateReview,
   checkReviewOwnership,
-} from '../controllers/review';
+} from '../controllers/review/review.middleware.js';
 
 const router = express.Router({ mergeParams: true });
 
