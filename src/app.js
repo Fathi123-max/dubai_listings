@@ -9,12 +9,12 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import morgan from 'morgan';
-
 // Import routes
 import authRouter from './routes/auth.routes.js';
 import propertyRouter from './routes/property.routes.js';
 import userRouter from './routes/user.routes.js';
 import reviewRouter from './routes/review.routes.js';
+import swaggerDocs from './config/swagger.js';
 
 // Import middleware
 import globalErrorHandler from './middleware/error.middleware.js';
@@ -83,7 +83,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// 3) ROUTES
+// 3) SWAGGER DOCS - Must be before other routes
+if (process.env.NODE_ENV === 'development') {
+  // Setup Swagger documentation
+  swaggerDocs(app);
+}
+
+// 4) ROUTES
 // Mount auth routes first to avoid conflicts
 app.use('/api/v1/auth', authRouter);
 
@@ -98,7 +104,7 @@ app.use('/api/v1/properties', propertyRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 
-// 4) ERROR HANDLING MIDDLEWARE
+// 5) ERROR HANDLING MIDDLEWARE
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
