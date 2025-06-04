@@ -6,7 +6,7 @@ import { sendEmail } from '../../utils/email.js';
 /**
  * Sends a verification email to the user
  */
-const sendVerificationEmail = async (user, req) => {
+export const sendVerificationEmail = async (user, req) => {
   // 1) Generate the random verification token
   const verificationToken = user.createEmailVerificationToken();
   await user.save({ validateBeforeSave: false });

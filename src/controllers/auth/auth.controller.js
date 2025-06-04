@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import User from '../../models/User.js';
 import AppError from '../../utils/AppError.js';
-
+import { sendVerificationEmail } from './verification.controller.js';
 const createSendToken = (user, statusCode, res) => {
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -38,7 +38,7 @@ export const signup = async (req, res, next) => {
     });
 
     // Send verification email would be handled by a separate email service
-    // await sendVerificationEmail(newUser, req);
+    await sendVerificationEmail(newUser, req);
 
     createSendToken(newUser, 201, res);
   } catch (err) {
@@ -78,6 +78,8 @@ export const logout = (req, res) => {
   res.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
   });
   res.status(200).json({ status: 'success' });
 };
